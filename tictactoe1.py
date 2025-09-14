@@ -193,6 +193,18 @@ class TicTacToeGame:
             
             user_input = input("Enter two numbers separated by a comma: ")
             humanrow, humancol = map(int, map(str.strip, user_input.split(',')))
+
+            if humanrow < 0 or humanrow > 2:
+                print("Please try again. Acceptable inputs are 0, 1, and 2.")
+                return self.playturn()
+                
+            if humancol < 0 or humancol > 2:
+                print("Please try again. Acceptable inputs are 0, 1, and 2.")
+                return self.playturn()
+
+            if self.gameboard.entries[humanrow][humancol] != 0:
+                print("The square is occupied. Please try again.")
+                return self.playturn()
     
                  
             self.gameboard.entries[humanrow][humancol] = 1
